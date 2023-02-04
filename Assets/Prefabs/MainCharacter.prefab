@@ -142,6 +142,8 @@ GameObject:
   - component: {fileID: 9078682666471698990}
   - component: {fileID: 9078682666471698977}
   - component: {fileID: 9078682666471698976}
+  - component: {fileID: 7911023229283718525}
+  - component: {fileID: 7982760492749569460}
   - component: {fileID: 9078682666471698979}
   - component: {fileID: 3642123136335807443}
   m_Layer: 0
@@ -232,6 +234,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55463d808cc05204da2dcca83cc31446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7911023229283718525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078682666471698978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0f0bc86e99e4b289c8a6f160a44874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterElementData: {fileID: 7982760492749569460}
+--- !u!114 &7982760492749569460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9078682666471698978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1935c7a37ee4b169fed2b5c0dd6c74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 1, g: 1, b: 1, a: 1}
+  waterColour: {r: 0, g: 0, b: 1, a: 1}
+  sunColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  characterSprite: {fileID: 9078682666471698977}
 --- !u!61 &9078682666471698979
 BoxCollider2D:
   m_ObjectHideFlags: 0
