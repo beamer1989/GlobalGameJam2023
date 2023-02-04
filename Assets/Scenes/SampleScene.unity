@@ -364,6 +364,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3642123136335807443, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
+      propertyPath: m_LinearDrag
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5582397728919889729, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
       propertyPath: mainCamera
       value: 
@@ -444,7 +448,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1132826877291659225, guid: 49f504b1fca7442a3ae82b09afe7700a, type: 3}
       propertyPath: MyElement
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1132826877291659226, guid: 49f504b1fca7442a3ae82b09afe7700a, type: 3}
       propertyPath: m_Name

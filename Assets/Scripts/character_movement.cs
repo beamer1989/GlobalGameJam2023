@@ -9,6 +9,9 @@ public class character_movement : MonoBehaviour
     private float startPosY;
     public bool isBeingHeld = false;
 
+    private float sunPowerIncrease = 5f;
+    private float waterPowerIncrease = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,8 @@ public class character_movement : MonoBehaviour
             this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<LineRenderer>().enabled = true;
             this.gameObject.transform.Find("ShootCursor").gameObject.GetComponent<SpriteRenderer>().enabled = true;
             
+            print(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState);
+            
         }
 
     }
@@ -60,6 +65,20 @@ public class character_movement : MonoBehaviour
         float x_force = this.gameObject.transform.position.x - this.gameObject.transform.Find("ShootCursor").gameObject.transform.position.x;
         float y_force = this.gameObject.transform.position.y - this.gameObject.transform.Find("ShootCursor").gameObject.transform.position.y;
         Vector2 shoot_force = new Vector2(x_force, y_force);    
+
+        // set SUN POWER
+        if(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState == ElementState.Sun){
+            shoot_force = shoot_force * sunPowerIncrease;
+        }
+
+        // set WATER POWER
+        if(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState == ElementState.Water){
+            this.gameObject.GetComponent<Rigidbody2D>().drag = 0.1f;
+        }
+        else
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().drag = 1f;
+        }
 
         // get rotation to send character
         Vector3 diff = this.gameObject.transform.Find("ShootCursor").gameObject.transform.position - this.gameObject.transform.position;
