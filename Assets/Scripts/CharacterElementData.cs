@@ -17,17 +17,28 @@ public class CharacterElementData : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField] private SpriteRenderer characterSprite;
 
+    public ElementState CurrentElementState
+    {
+        get
+        {
+            return _currentElementState;
+        }
+        set
+        {
+            _currentElementState = value;
+            RefreshElementColour();
+        }
+    }
+    
     private ElementState _currentElementState;
 
-
-    public void SetCurrentElementState(ElementState newElementState)
+    public bool CanPickUpElement()
     {
-        _currentElementState = newElementState;
-        RefreshElementColour();
+        return _currentElementState == ElementState.Default;
     }
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         RefreshElementColour();
     }

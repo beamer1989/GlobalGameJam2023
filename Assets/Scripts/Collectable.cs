@@ -33,12 +33,12 @@ public class Collectable : MonoBehaviour
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		CharacterElementData playerCharacter = col.gameObject.GetComponent<CharacterElementData>();
-		if (playerCharacter == null)
+		if (playerCharacter == null || !playerCharacter.CanPickUpElement())
 		{
 			return;
 		}
 		
-		playerCharacter.SetCurrentElementState(MyElement);
+		playerCharacter.CurrentElementState = MyElement;
 		
 		//TODO: Play some Pickup Animation here
 		
