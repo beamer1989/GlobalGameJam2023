@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(Collider2D))]
 public class Collectable : MonoBehaviour
 {
 	[Header("This determines the type of Element")]
-	public ElementState Element = ElementState.Default;
+	public ElementState MyElement = ElementState.Default;
 
 	[Header("Element Display Values")]
 	[SerializeField] private Sprite sunCollectableSprite;
@@ -16,7 +16,7 @@ public class Collectable : MonoBehaviour
 
 	private void Awake()
 	{
-		switch (Element)
+		switch (MyElement)
 		{
 			case ElementState.Sun:
 				_spriteRenderer.sprite = sunCollectableSprite;
@@ -30,4 +30,18 @@ public class Collectable : MonoBehaviour
 		}
 	}
 
+	private void OnTriggerEnter2D(Collider2D col)
+	{
+		CharacterElementData playerCharacter = col.gameObject.GetComponent<CharacterElementData>();
+		if (playerCharacter == null)
+		{
+			return;
+		}
+		
+		playerCharacter.SetCurrentElementState(MyElement);
+		
+		//TODO: Play some Pickup Animation here
+		
+		Destroy(this.gameObject);
+	}
 }
