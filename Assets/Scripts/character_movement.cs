@@ -24,7 +24,9 @@ public class character_movement : MonoBehaviour
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x, mousePos.y, 0);
+            this.gameObject.transform.Find("Shoot_cursor").gameObject.transform.position = new Vector2(mousePos.x, mousePos.y);
+            
+            
         }
     }
 
@@ -46,6 +48,13 @@ public class character_movement : MonoBehaviour
     private void OnMouseUp()
     {
         isBeingHeld = false;
+        float x_force = this.gameObject.transform.position.x - this.gameObject.transform.Find("Shoot_cursor").gameObject.transform.position.x;
+        float y_force = this.gameObject.transform.position.y - this.gameObject.transform.Find("Shoot_cursor").gameObject.transform.position.y;
+        this.gameObject.transform.Find("Shoot_cursor").gameObject.transform.position = this.gameObject.transform.position;
+        Vector2 shoot_force = new Vector2(x_force, y_force);
+        this.gameObject.GetComponent<Rigidbody2D>().AddForce(shoot_force, ForceMode2D.Impulse);
 
+        print(x_force);
+        print(y_force);
     }
 }
