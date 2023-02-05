@@ -33,6 +33,14 @@ public class character_movement : MonoBehaviour
             shootingLine.SetPosition(0, transform.position);
             shootingLine.SetPosition(1, mousePos);
         }
+
+
+        if (Input.GetKeyDown("space"))
+        {
+            print("pressed space");
+            GetComponent<CharacterSoftBody>().ResetReferencePoints();
+        }
+
     }
 
     private void OnMouseDown()
