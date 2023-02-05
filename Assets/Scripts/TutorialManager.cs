@@ -43,7 +43,7 @@ public class TutorialManager : MonoBehaviour
         StrokeCounter.tutorialMode = true;
 
         tuteStatus = tuteStatuses.ClicknHold;
-        TutorialText.text = "Click and hold...";
+        TutorialText.text = "Click and hold on the green tree sprite...";
 
         LifePointPanel.gameObject.SetActive(false);
         Minimap.enabled = false;
