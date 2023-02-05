@@ -57,6 +57,8 @@ public class Collectable : MonoBehaviour
 			return;
 		}
 		
+		StrokeCounter.IncreaseStrokesPowerup();
+
 		playerCharacter.CurrentElementState = MyElement;
 		
 		//TODO: Play some Pickup Animation here
