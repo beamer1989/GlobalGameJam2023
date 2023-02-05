@@ -46,6 +46,7 @@ public class CharacterSoftBody : MonoBehaviour
             referencePoints[i] = new GameObject();
             referencePoints[i].name = $"Rigidbody {i}";
             referencePoints[i].tag = gameObject.tag;
+            referencePoints[i].layer = 2; //This is the Ignore Raycasts layer!
             //referencePoints[i].AddComponent<PropagateCollisions>();
             referencePoints[i].transform.parent = transform;
 
@@ -63,11 +64,11 @@ public class CharacterSoftBody : MonoBehaviour
             allReferencePoints[i] = body;
 
 
-            CircleCollider2D collider = referencePoints[i].AddComponent<CircleCollider2D>();
-            collider.radius = referencePointRadius * (transform.localScale.x / 2);
+            CircleCollider2D newCircleCollider = referencePoints[i].AddComponent<CircleCollider2D>();
+            newCircleCollider.radius = referencePointRadius * (transform.localScale.x / 2);
             if (surfaceMaterial != null)
             {
-                collider.sharedMaterial = surfaceMaterial;
+                newCircleCollider.sharedMaterial = surfaceMaterial;
             }
 
             AttachWithSpringJoint(referencePoints[i], gameObject);
