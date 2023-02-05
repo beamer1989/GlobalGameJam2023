@@ -14,6 +14,11 @@ public class CharacterElementData : MonoBehaviour
     [SerializeField] private Color waterColour = Color.blue;
     [SerializeField] private Color sunColour = Color.yellow;
     
+    [Header("Character Targeting Line Colours")]
+    [SerializeField] private Material defaultLine;
+    [SerializeField] private Material waterLine;
+    [SerializeField] private Material sunLine;
+
     [Header("UI Elements")]
     [SerializeField] private SpriteRenderer characterSprite;
 
@@ -49,12 +54,15 @@ public class CharacterElementData : MonoBehaviour
         {
             case ElementState.Water:
                 characterSprite.color = waterColour; 
+                this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>().material = waterLine;
                 break;
             case ElementState.Sun:
                 characterSprite.color = sunColour;
+                this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>().material = sunLine;
                 break;
             default:
                 characterSprite.color = defaultColour; 
+                this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>().material = defaultLine;
                 break;
         }
     }
