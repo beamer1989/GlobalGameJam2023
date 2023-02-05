@@ -15,7 +15,9 @@ public class DepositController : MonoBehaviour
 		}
 
 		playerController.CurrentElementState = ElementState.Default;
-		
+
+		col.gameObject.GetComponent<PlaySoundEffects>().playDeliver();
+                
         StrokeCounter.IncreaseStrokes();
 	}
 
