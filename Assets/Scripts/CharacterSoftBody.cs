@@ -17,7 +17,8 @@ public class CharacterSoftBody : MonoBehaviour
 	public Rigidbody2D[] allReferencePoints;
 	
 	[HideInInspector] public GameObject[] referencePoints;
-	
+    [HideInInspector] private Vector3[] referencePointOriginalLocations;
+
     int vertexCount;
 	Vector3[] vertices;
 	int[] triangles;
@@ -32,12 +33,23 @@ public class CharacterSoftBody : MonoBehaviour
         MapVerticesToReferencePoints();
     }
 
+    public void ResetReferencePoints()
+    {
+        Debug.Log("ResettingReferencePoints");
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
 
+        for (int i = 0; i < referencePointsCount; i++)
+        {
+            Debug.Log("ResettingReferencePoint: " + referencePointOriginalLocations[i]);
+            referencePoints[i].transform.localPosition = referencePointOriginalLocations[i];
+        }
+    }
 
     void CreateReferencePoints()
     {
         Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
         referencePoints = new GameObject[referencePointsCount];
+        referencePointOriginalLocations = new Vector3[referencePointsCount];
         Vector3 offsetFromCenter = ((0.5f - referencePointRadius) * Vector3.up);
         float angle = 360.0f / referencePointsCount;
 
@@ -51,9 +63,11 @@ public class CharacterSoftBody : MonoBehaviour
             referencePoints[i].transform.parent = transform;
 
             Quaternion rotation = Quaternion.AngleAxis(angle * (i - 1), Vector3.back);
-            referencePoints[i].transform.localPosition = rotation * offsetFromCenter;
+            Vector3 tmp = rotation * offsetFromCenter;
+            referencePoints[i].transform.localPosition = tmp;
+            referencePointOriginalLocations[i] = tmp;
 
-            Rigidbody2D body = referencePoints[i].AddComponent<Rigidbody2D>();
+                Rigidbody2D body = referencePoints[i].AddComponent<Rigidbody2D>();
             body.constraints = RigidbodyConstraints2D.None;
             body.mass = bodyMass;
             body.interpolation = rigidbody.interpolation;
