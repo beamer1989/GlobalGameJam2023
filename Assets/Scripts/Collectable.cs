@@ -37,8 +37,9 @@ public class Collectable : MonoBehaviour
 				{
 					sunCollectableDisplay.SetActive(false);
 					waterCollectableDisplay.SetActive(true);
+					_minimapSpriteRenderer.color = new Color(0, 0, 255);
 					_minimapSpriteRenderer.sprite = minimapSprite;
-					_minimapSpriteRenderer.color = Color.blue;//new Color(162, 255, 255);
+					
 					//Debug.Log(_minimapSpriteRenderer.color); 
 				}
 				break;
@@ -56,6 +57,8 @@ public class Collectable : MonoBehaviour
 			return;
 		}
 		
+		StrokeCounter.IncreaseStrokesPowerup();
+
 		playerCharacter.CurrentElementState = MyElement;
 		
 		Destroy(this.gameObject);

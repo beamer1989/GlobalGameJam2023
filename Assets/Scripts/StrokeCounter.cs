@@ -33,6 +33,13 @@ public class StrokeCounter : MonoBehaviour
         print(strokesAvailable);
     }
 
+    static public void IncreaseStrokesPowerup()
+    {
+        strokesAvailable += 5;
+        strokesAvailable = strokesAvailable > 15 ? 15 : strokesAvailable; // prevent going above 15
+        print(strokesAvailable);
+    }
+
     static public void GameOver()
     {
         if (!tutorialMode)

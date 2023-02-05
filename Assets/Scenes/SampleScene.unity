@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2758,6 +2758,18 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 9078682666471698976, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
+      propertyPath: sunPowerIncrease
+      value: 8.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078682666471698976, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
+      propertyPath: waterPowerIncrease
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 9078682666471698976, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
+      propertyPath: shootingForceDefault
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9078682666471698978, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
       propertyPath: m_Name
       value: MainCharacter
@@ -4345,11 +4357,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061491456421129733, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6061491456421129733, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -22.3
+      value: -21.57
       objectReference: {fileID: 0}
     - target: {fileID: 6061491456421129733, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4386,6 +4398,10 @@ PrefabInstance:
     - target: {fileID: 6061491456421129737, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
       propertyPath: m_Name
       value: MinimapCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6061491456421129738, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
+      propertyPath: orthographic size
+      value: 77.4
       objectReference: {fileID: 0}
     - target: {fileID: 6061491456421129739, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
       propertyPath: m_Enabled
