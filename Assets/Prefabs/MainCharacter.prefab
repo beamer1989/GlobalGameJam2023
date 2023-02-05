@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 844604797989078669}
   - component: {fileID: 1127919338787197871}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ShootingLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6792155402987473157}
   - component: {fileID: 6481919408374675780}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: ShootCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

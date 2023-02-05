@@ -1117,18 +1117,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3642123136335807443, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
-      propertyPath: m_LinearDrag
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5582397728919889729, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 519420028}
-    - target: {fileID: 6804314530432305571, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 9078682666471698978, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
       propertyPath: m_Name
       value: MainCharacter
@@ -1180,10 +1172,6 @@ PrefabInstance:
     - target: {fileID: 9078682666471698990, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9177241789168508686, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5658338286341520051, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
@@ -1838,7 +1826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061491456421129733, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -24
+      value: -22.3
       objectReference: {fileID: 0}
     - target: {fileID: 6061491456421129733, guid: c7052a3a1fdb0dd4b80180e97047dfea, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1890,10 +1878,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6104371753582010238, guid: 2d4bcff1799684a4e9d895d86b96a27e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 0b69544f286285a4d8da366dbf505d3b, type: 3}
     - target: {fileID: 6104371753600238529, guid: 2d4bcff1799684a4e9d895d86b96a27e, type: 3}
       propertyPath: m_Name
       value: MinimapTreeCanvas
