@@ -7,7 +7,9 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject tutorialTextPrefab;
     public GameObject playerCursor;
-    private GameObject TutorialText;
+    public GameObject TutorialText;
+    public GameObject VignetteCanvas01;
+    public GameObject VignetteCanvas02;
     private enum tuteStatuses
     {
         ClicknHold,
@@ -21,7 +23,8 @@ public class TutorialManager : MonoBehaviour
     void Start()
     {
         tuteStatus = tuteStatuses.ClicknHold;
-        TutorialText = Instantiate(tutorialTextPrefab, playerCursor.transform);
+        //Debug.Log(TutorialText);
+        //TutorialText = Instantiate(tutorialTextPrefab, playerCursor.transform);
     }
 
     // Update is called once per frame 
@@ -32,7 +35,8 @@ public class TutorialManager : MonoBehaviour
             if (playerCursor.GetComponent<character_movement>().isBeingHeld)
             {
                 tuteStatus = tuteStatuses.DragnRelease;
-                TutorialText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("Drag...and release.");
+                TutorialText.GetComponent<TextMeshProUGUI>().SetText("Drag...and release.");
+                //VignetteCanvas01.transform;
             }
         }
         else if (tuteStatus == tuteStatuses.DragnRelease)
@@ -40,7 +44,7 @@ public class TutorialManager : MonoBehaviour
             if (!playerCursor.GetComponent<character_movement>().isBeingHeld)
             {
                 tuteStatus = tuteStatuses.CollectItems;
-                TutorialText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("Collect a sundrop or a water drop");
+                TutorialText.GetComponent<TextMeshProUGUI>().SetText("Collect a sundrop or a water drop");
             }
         }
         else if (tuteStatus == tuteStatuses.CollectItems)
@@ -49,13 +53,13 @@ public class TutorialManager : MonoBehaviour
             if (charElemDat.CurrentElementState != ElementState.Default)
             {
                 tuteStatus = tuteStatuses.ReturnHome;
-                TutorialText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("Bring your cargo to the heart of the tree.");
+                TutorialText.GetComponent<TextMeshProUGUI>().SetText("Bring your cargo to the heart of the tree.");
             }
         }
         else if (false)//tuteStatus == tuteStatuses.ReturnHome)
         {
             tuteStatus = tuteStatuses.AllDone;
-            TutorialText.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText("You get the idea, have fun!");
+            TutorialText.GetComponent<TextMeshProUGUI>().SetText("You get the idea, have fun!");
         }
     }
 }
