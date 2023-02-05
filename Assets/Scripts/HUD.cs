@@ -13,7 +13,7 @@ public class HUD : MonoBehaviour
     {
         for (int i = 0; i < 15; i++)
         {
-            if (i >= StrokeCounter.strokesAvailable)
+            if (i >= StrokeCounter.strokesAvailable - 1)
                 lifePoint[i].enabled = false;
             else
                 lifePoint[i].enabled = true;
