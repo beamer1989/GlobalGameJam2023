@@ -106,7 +106,7 @@ public class character_movement : MonoBehaviour
         this.gameObject.transform.Find("ShootCursor").gameObject.transform.position = this.gameObject.transform.position;
 
         // apply force and rotation to character
-        this.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
+        this.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 180);
         this.gameObject.GetComponent<Rigidbody2D>().AddForce(shoot_force, ForceMode2D.Impulse);
 
         // remove the shooting line and cursor
