@@ -44,6 +44,7 @@ public class CharacterSoftBody : MonoBehaviour
         for (int i = 0; i < referencePointsCount; i++)
         {
             referencePoints[i] = new GameObject();
+            referencePoints[i].name = $"Rigidbody {i}";
             referencePoints[i].tag = gameObject.tag;
             //referencePoints[i].AddComponent<PropagateCollisions>();
             referencePoints[i].transform.parent = transform;

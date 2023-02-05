@@ -10,10 +10,6 @@ using UnityEngine;
 public class CharacterElementData : MonoBehaviour
 {
     [Header("Character Element Colours")]
-    [SerializeField] private Color defaultColour = Color.white;
-    [SerializeField] private Color waterColour = Color.blue;
-    [SerializeField] private Color sunColour = Color.yellow;
-
     [SerializeField] private Material defaultMaterial;
     [SerializeField] private Material yellowMaterial;
     [SerializeField] private Material blueMaterial;
@@ -25,7 +21,6 @@ public class CharacterElementData : MonoBehaviour
     [SerializeField] private Material sunLine;
 
     [Header("UI Elements")]
-    //[SerializeField] private SpriteRenderer characterSprite;
     [SerializeField] private MeshRenderer _meshRenderer;
     
     public ElementState CurrentElementState
@@ -56,19 +51,22 @@ public class CharacterElementData : MonoBehaviour
 
     private void RefreshElementColour()
     {
+        Renderer shootingLineRenderer =
+            this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>();
+        
         switch (_currentElementState)
         {
             case ElementState.Water:
                 _meshRenderer.material = blueMaterial;
-                this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>().material = waterLine;
+                shootingLineRenderer.material = waterLine;
                 break;
             case ElementState.Sun:
                 _meshRenderer.material = yellowMaterial;
-                this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>().material = sunLine;
+                shootingLineRenderer.material = sunLine;
                 break;
             default:
                 _meshRenderer.material = defaultMaterial;
-                this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>().material = defaultLine;
+                shootingLineRenderer.material = defaultLine;
                 break;
         }
     }

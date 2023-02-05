@@ -157,7 +157,7 @@ Transform:
   m_GameObject: {fileID: 3862569922977821346}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3979902106688266114}
@@ -247,7 +247,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3979902106688266126}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -270,6 +270,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBeingHeld: 0
+  sunPowerIncrease: 5
+  waterPowerIncrease: 0.1
+  dragDefault: 1
+  shootingForceDefault: 1
 --- !u!114 &2814503062056532177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +302,10 @@ MonoBehaviour:
   defaultColour: {r: 1, g: 1, b: 1, a: 1}
   waterColour: {r: 0, g: 0, b: 1, a: 1}
   sunColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  characterSprite: {fileID: 9078682666471698977, guid: 7e7fec3b21df9884a81d80bbd8ea8821, type: 3}
+  defaultMaterial: {fileID: 2100000, guid: af206532c665d40ab9b846d03d1881f7, type: 2}
+  yellowMaterial: {fileID: 2100000, guid: 113ee8f7d035a41deb99382caa51d73e, type: 2}
+  blueMaterial: {fileID: 2100000, guid: d8d918b94590b415b8ce5e91a04cb119, type: 2}
+  _meshRenderer: {fileID: 5388141518306326324}
 --- !u!61 &3979902106688266127
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -423,7 +430,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 5
   height: 5
-  bodyMass: 0.01
+  bodyMass: 0.125
+  bodyLinearDrag: 1
+  bodyAngularDrag: 100
   referencePointsCount: 6
   referencePointRadius: 0.25
   mappingDetail: 10
@@ -437,3 +446,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  referencePoints: []
