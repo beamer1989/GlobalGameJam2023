@@ -58,8 +58,6 @@ public class Collectable : MonoBehaviour
 		
 		playerCharacter.CurrentElementState = MyElement;
 		
-		//TODO: Play some Pickup Animation here
-		
 		Destroy(this.gameObject);
 	}
 }
