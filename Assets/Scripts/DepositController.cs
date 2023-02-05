@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class DepositController : MonoBehaviour
 {
 	public Transform CollectablesParent;
-	private int _currentTotalCollected;
+	public static int CurrentTotalCollected;
 	private int _totalCollectablesToWin;
 
 	private void Start()
@@ -35,9 +35,9 @@ public class DepositController : MonoBehaviour
 	
 	private void CheckIfGameWin()
 	{
-		_currentTotalCollected++;
+		CurrentTotalCollected++;
 
-		if (_currentTotalCollected >= _totalCollectablesToWin)
+		if (CurrentTotalCollected >= _totalCollectablesToWin)
 		{
 			//Trigger game win
 			SceneManager.LoadScene(4);

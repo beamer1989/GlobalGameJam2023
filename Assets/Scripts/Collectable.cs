@@ -30,7 +30,7 @@ public class Collectable : MonoBehaviour
 					_minimapSpriteRenderer.color = new Color(255, 226, 0);
 					_minimapSpriteRenderer.sprite = minimapSprite;
 					//Debug.Log(_minimapSpriteRenderer.sprite);
-					Debug.Log(_minimapSpriteRenderer.color); 
+					//Debug.Log(_minimapSpriteRenderer.color); 
 				}
 				break;
 			case ElementState.Water:
@@ -39,7 +39,7 @@ public class Collectable : MonoBehaviour
 					waterCollectableDisplay.SetActive(true);
 					_minimapSpriteRenderer.sprite = minimapSprite;
 					_minimapSpriteRenderer.color = Color.blue;//new Color(162, 255, 255);
-					Debug.Log(_minimapSpriteRenderer.color); 
+					//Debug.Log(_minimapSpriteRenderer.color); 
 				}
 				break;
 			default:
