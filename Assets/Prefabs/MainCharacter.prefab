@@ -192,6 +192,9 @@ MonoBehaviour:
   waterPowerIncrease: 0.1
   dragDefault: 1
   shootingForceDefault: 1
+  rigidbody2D: {fileID: 3642123136335807443}
+  shootingLine: {fileID: 1127919338787197871}
+  shootCursor: {fileID: 9177241789168508686}
 --- !u!114 &7911023229283718525
 MonoBehaviour:
   m_ObjectHideFlags: 0
