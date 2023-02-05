@@ -15,6 +15,14 @@ public class StrokeCounter : MonoBehaviour
         strokesAvailable = startingStrokes;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            print("space key was pressed");
+        }
+    }
+
     static public void ReduceStrokes()
     {
         strokesAvailable -= 1;
@@ -45,4 +53,6 @@ public class StrokeCounter : MonoBehaviour
         if (!tutorialMode)
             SceneManager.LoadScene(3); // hardcoded scene id for now
     }
+
+
 }
