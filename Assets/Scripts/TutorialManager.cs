@@ -131,7 +131,7 @@ public class TutorialManager : MonoBehaviour
                     else
                     {
                         tuteStatus = tuteStatuses.GotSunA;
-                        TutorialText.text = "Sun energy makes you move further, try it a bit";
+                        TutorialText.text = "Sun energy makes you shoot stronger, and water energy makes you slide more. You can only hold one energy at a time.";
                         sunCounter++;
                     }
                 }
@@ -161,7 +161,7 @@ public class TutorialManager : MonoBehaviour
                     else
                     {
                         tuteStatus = tuteStatuses.GotWaterA;
-                        TutorialText.text = "Water energy makes you bounce more, try it a bit";
+                        TutorialText.text = "Water energy makes you slide more, and sun energy makes you shoot stronger. You can only hold one energy at a time.";
                         waterCounter++;
                     }
                 }
@@ -170,7 +170,7 @@ public class TutorialManager : MonoBehaviour
                 if (DepositController.CurrentTotalCollected > 0)
                 {
                     tuteStatus = tuteStatuses.TrackLivesA;
-                    TutorialText.text = "Delivering to the heart of the tree gave you energy!";
+                    TutorialText.text = "Delivering to the heart of the tree gave you more shots! Picking up an energy will give you shots too.";
                     LifePointPanel.gameObject.SetActive(true);
                 }
                 break;
@@ -184,7 +184,7 @@ public class TutorialManager : MonoBehaviour
                     else
                     {
                         tuteStatus = tuteStatuses.AllDoneA;
-                        TutorialText.text = "You get the idea, have fun!";
+                        TutorialText.text = "Collecting and deliverying all the energy in the tree and you win!";
 
                         StrokeCounter.tutorialMode = false;
                     }
@@ -194,7 +194,7 @@ public class TutorialManager : MonoBehaviour
                 if (!mainCharacter.GetComponent<character_movement>().isBeingHeld)
                 {
                     tuteStatus = tuteStatuses.TrackLivesA;
-                    TutorialText.text = "But every launch, you will lose energy...try it out a bit.";
+                    TutorialText.text = "But every launch, you will lose shots. If you run out, you lose.";
                     trackLivesCounter++;
                 }
                 break;
