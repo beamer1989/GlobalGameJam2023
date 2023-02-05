@@ -77,12 +77,24 @@ public class character_movement : MonoBehaviour
         }
 
         // set WATER POWER
-        if(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState == ElementState.Water){
-            this.gameObject.GetComponent<Rigidbody2D>().drag = waterPowerIncrease;
+        var softBodyReferences= this.gameObject.GetComponent<CharacterSoftBody>().referencePoints;
+        float newDrag;
+        if(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState == ElementState.Water)
+        {
+            newDrag = waterPowerIncrease;
         }
         else
         {
-            this.gameObject.GetComponent<Rigidbody2D>().drag = dragDefault;
+            newDrag = dragDefault;
+        }
+
+        if (this.gameObject.GetComponent<Rigidbody2D>().drag != newDrag)
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().drag = newDrag;
+            foreach (var softBodyReference in softBodyReferences)
+            {
+                softBodyReference.GetComponent<Rigidbody2D>().drag = newDrag;
+            }
         }
 
         // get rotation to send character

@@ -10,13 +10,19 @@ using UnityEngine;
 public class CharacterElementData : MonoBehaviour
 {
     [Header("Character Element Colours")]
-    [SerializeField] private Color defaultColour = Color.white;
-    [SerializeField] private Color waterColour = Color.blue;
-    [SerializeField] private Color sunColour = Color.yellow;
-    
-    [Header("UI Elements")]
-    [SerializeField] private SpriteRenderer characterSprite;
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private Material yellowMaterial;
+    [SerializeField] private Material blueMaterial;
 
+    
+    [Header("Character Targeting Line Colours")]
+    [SerializeField] private Material defaultLine;
+    [SerializeField] private Material waterLine;
+    [SerializeField] private Material sunLine;
+
+    [Header("UI Elements")]
+    [SerializeField] private MeshRenderer _meshRenderer;
+    
     public ElementState CurrentElementState
     {
         get
@@ -45,16 +51,22 @@ public class CharacterElementData : MonoBehaviour
 
     private void RefreshElementColour()
     {
+        Renderer shootingLineRenderer =
+            this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<Renderer>();
+        
         switch (_currentElementState)
         {
             case ElementState.Water:
-                characterSprite.color = waterColour; 
+                _meshRenderer.material = blueMaterial;
+                shootingLineRenderer.material = waterLine;
                 break;
             case ElementState.Sun:
-                characterSprite.color = sunColour;
+                _meshRenderer.material = yellowMaterial;
+                shootingLineRenderer.material = sunLine;
                 break;
             default:
-                characterSprite.color = defaultColour; 
+                _meshRenderer.material = defaultMaterial;
+                shootingLineRenderer.material = defaultLine;
                 break;
         }
     }
