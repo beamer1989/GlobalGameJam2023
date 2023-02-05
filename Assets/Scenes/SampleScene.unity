@@ -1009,6 +1009,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6104371753582010238, guid: 2d4bcff1799684a4e9d895d86b96a27e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0b69544f286285a4d8da366dbf505d3b, type: 3}
     - target: {fileID: 6104371753600238529, guid: 2d4bcff1799684a4e9d895d86b96a27e, type: 3}
       propertyPath: m_Name
       value: MinimapTreeCanvas
@@ -1215,6 +1219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCamTreeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8318617151164460511, guid: e8f4443d3ff5961429ee0362b2e50d38, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8318617151164460514, guid: e8f4443d3ff5961429ee0362b2e50d38, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1318,6 +1326,10 @@ PrefabInstance:
     - target: {fileID: 8318617151164460515, guid: e8f4443d3ff5961429ee0362b2e50d38, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318617152356980375, guid: e8f4443d3ff5961429ee0362b2e50d38, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8f4443d3ff5961429ee0362b2e50d38, type: 3}
