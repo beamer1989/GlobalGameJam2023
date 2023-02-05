@@ -25,7 +25,7 @@ public class StrokeCounter : MonoBehaviour
     
     static public void IncreaseStrokes()
     {
-        strokesAvailable += 1;
+        strokesAvailable += 10;
         print(strokesAvailable);
     }
 
