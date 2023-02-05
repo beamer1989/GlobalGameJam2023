@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StrokeCounter : MonoBehaviour
 {
@@ -31,6 +32,6 @@ public class StrokeCounter : MonoBehaviour
 
     static public void GameOver()
     {
-        print("GAME OVER");
+        SceneManager.LoadScene(3); // hardcoded scene id for now
     }
 }
