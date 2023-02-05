@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 9078682666471698979}
   - component: {fileID: 3642123136335807443}
   - component: {fileID: 5582397728919889729}
-  - component: {fileID: -5960369386302184256}
   m_Layer: 0
   m_Name: MainCharacter
   m_TagString: Untagged
@@ -269,6 +268,9 @@ MonoBehaviour:
   defaultColour: {r: 1, g: 1, b: 1, a: 1}
   waterColour: {r: 0, g: 0, b: 1, a: 1}
   sunColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  defaultLine: {fileID: 2100000, guid: 4c37878f3324add45828772df855186b, type: 2}
+  waterLine: {fileID: 2100000, guid: 8b0315c6a22fee144bffc0ba5e6b7d3c, type: 2}
+  sunLine: {fileID: 2100000, guid: ac84f77c65aa48a4998ec960180bfc83, type: 2}
   characterSprite: {fileID: 9078682666471698977}
 --- !u!61 &9078682666471698979
 BoxCollider2D:
@@ -330,19 +332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
---- !u!114 &-5960369386302184256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9078682666471698978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4babdb1555a95740a1edf2acd622de8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingStrokes: 5
 --- !u!1 &9177241789168508686
 GameObject:
   m_ObjectHideFlags: 0
