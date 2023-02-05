@@ -16,6 +16,7 @@ public class TutorialManager : MonoBehaviour
     private int minimapCounter;
     private int sunCounter;
     private int waterCounter;
+    private int doneCounter;
     private enum tuteStatuses
     {
         ClicknHold,
@@ -32,7 +33,8 @@ public class TutorialManager : MonoBehaviour
         GotWaterB,
         GotWaterC,
         ReturnHome,
-        AllDone
+        AllDoneA,
+        AllDoneB
     }
     private tuteStatuses tuteStatus;
 
@@ -45,7 +47,7 @@ public class TutorialManager : MonoBehaviour
 
         LifePointPanel.gameObject.SetActive(false);
         Minimap.enabled = false;
-        Collectables.SetActive(false);
+        //Collectables.SetActive(false);
     }
 
     // Update is called once per frame 
@@ -80,7 +82,7 @@ public class TutorialManager : MonoBehaviour
                     {
                         tuteStatus = tuteStatuses.CollectItems;
                         TutorialText.text = "Try moving toward a blue or yellow dot on the mini-map.";
-                        Collectables.SetActive(true);
+                        //Collectables.SetActive(true);
                     }
                 }
                 break;
@@ -100,7 +102,7 @@ public class TutorialManager : MonoBehaviour
                         TutorialText.text = "What's this?  You collected sun!";
                     } else if (charElemDat.CurrentElementState == ElementState.Water)
                     {
-                        tuteStatus = tuteStatuses.ReturnHome;
+                        tuteStatus = tuteStatuses.GotWaterA;
                         TutorialText.text = "What's this?  You collected water!";
                     }
                 }
@@ -116,21 +118,28 @@ public class TutorialManager : MonoBehaviour
                     {
                         tuteStatus = tuteStatuses.ReturnHome;
                         TutorialText.text = "Bring your cargo to the heart of the tree.";
-                        Collectables.SetActive(true);
                     }
                 }
                 break;
             case tuteStatuses.GotSunB:
                 if (!mainCharacter.GetComponent<character_movement>().isBeingHeld)
                 {
-                    tuteStatus = tuteStatuses.GotSunA;
-                    TutorialText.text = "Sun energy makes you move further, try it a bit";
-                    sunCounter++;
+                    if (DepositController.CurrentTotalCollected > 0)
+                    {
+                        tuteStatus = tuteStatuses.ReturnHome;
+                    }
+                    else
+                    {
+                        tuteStatus = tuteStatuses.GotSunA;
+                        TutorialText.text = "Sun energy makes you move further, try it a bit";
+                        sunCounter++;
+                    }
                 }
                 break;
             case tuteStatuses.GotWaterA:
                 if (mainCharacter.GetComponent<character_movement>().isBeingHeld)
                 {
+                    Debug.Log("waterCounter: " + waterCounter);
                     if (waterCounter == 0)
                         waterCounter++;
                     if (waterCounter < 5)
@@ -139,16 +148,22 @@ public class TutorialManager : MonoBehaviour
                     {
                         tuteStatus = tuteStatuses.ReturnHome;
                         TutorialText.text = "Bring your cargo to the heart of the tree.";
-                        Collectables.SetActive(true);
                     }
                 }
                 break;
             case tuteStatuses.GotWaterB:
                 if (!mainCharacter.GetComponent<character_movement>().isBeingHeld)
                 {
-                    tuteStatus = tuteStatuses.GotWaterA;
-                    TutorialText.text = "Water energy makes you bounce more, try it a bit";
-                    waterCounter++;
+                    if (DepositController.CurrentTotalCollected > 0)
+                    {
+                        tuteStatus = tuteStatuses.ReturnHome;
+                    }
+                    else
+                    {
+                        tuteStatus = tuteStatuses.GotWaterA;
+                        TutorialText.text = "Water energy makes you bounce more, try it a bit";
+                        waterCounter++;
+                    }
                 }
                 break;
             case tuteStatuses.ReturnHome:
@@ -168,8 +183,10 @@ public class TutorialManager : MonoBehaviour
                         tuteStatus = tuteStatuses.TrackLivesB;
                     else
                     {
-                        tuteStatus = tuteStatuses.AllDone;
+                        tuteStatus = tuteStatuses.AllDoneA;
                         TutorialText.text = "You get the idea, have fun!";
+
+                        StrokeCounter.tutorialMode = false;
                     }
                 }
                 break;
@@ -179,6 +196,26 @@ public class TutorialManager : MonoBehaviour
                     tuteStatus = tuteStatuses.TrackLivesA;
                     TutorialText.text = "But every launch, you will lose energy...try it out a bit.";
                     trackLivesCounter++;
+                }
+                break;
+            case tuteStatuses.AllDoneA:
+                if (mainCharacter.GetComponent<character_movement>().isBeingHeld)
+                {
+                    if (doneCounter == 0)
+                        doneCounter++;
+                    if (doneCounter < 5)
+                        tuteStatus = tuteStatuses.AllDoneB;
+                    else
+                    {
+                        TutorialText.enabled = false;
+                    }
+                }
+                break;
+            case tuteStatuses.AllDoneB:
+                if (!mainCharacter.GetComponent<character_movement>().isBeingHeld)
+                {
+                    tuteStatus = tuteStatuses.AllDoneA;
+                    doneCounter++;
                 }
                 break;
         }
