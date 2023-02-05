@@ -13,10 +13,16 @@ public class CharacterElementData : MonoBehaviour
     [SerializeField] private Color defaultColour = Color.white;
     [SerializeField] private Color waterColour = Color.blue;
     [SerializeField] private Color sunColour = Color.yellow;
+
+    [SerializeField] private Material defaultMaterial;
+    [SerializeField] private Material yellowMaterial;
+    [SerializeField] private Material blueMaterial;
+
     
     [Header("UI Elements")]
-    [SerializeField] private SpriteRenderer characterSprite;
-
+    //[SerializeField] private SpriteRenderer characterSprite;
+    [SerializeField] private MeshRenderer _meshRenderer;
+    
     public ElementState CurrentElementState
     {
         get
@@ -48,13 +54,16 @@ public class CharacterElementData : MonoBehaviour
         switch (_currentElementState)
         {
             case ElementState.Water:
-                characterSprite.color = waterColour; 
+                //characterSprite.color = waterColour; 
+                _meshRenderer.material = blueMaterial;
                 break;
             case ElementState.Sun:
-                characterSprite.color = sunColour;
+                //characterSprite.color = sunColour;
+                _meshRenderer.material = yellowMaterial;
                 break;
             default:
-                characterSprite.color = defaultColour; 
+                //characterSprite.color = defaultColour; 
+                _meshRenderer.material = defaultMaterial;
                 break;
         }
     }
