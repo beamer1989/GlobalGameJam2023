@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class DepositController : MonoBehaviour
 {
-	public int TotalCollectables = 0;
+	public Transform CollectablesParent;
+	private int _currentTotalCollected;
+	private int _totalCollectablesToWin;
 
-	private int _currentTotalCollected = 0;
+	private void Start()
+	{
+		_totalCollectablesToWin = CollectablesParent.childCount;
+	}
 	
 	private void OnTriggerEnter2D(Collider2D col)
 	{
@@ -32,7 +37,7 @@ public class DepositController : MonoBehaviour
 	{
 		_currentTotalCollected++;
 
-		if (_currentTotalCollected >= TotalCollectables)
+		if (_currentTotalCollected >= _totalCollectablesToWin)
 		{
 			//Trigger game win
 			SceneManager.LoadScene(4);
