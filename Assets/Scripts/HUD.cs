@@ -6,11 +6,19 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour
 {
     [Header("ShotCounter")]
-    [SerializeField] private Text shotCounter;
+    [SerializeField] private Image[] lifePoint;
 
     // Update is called once per frame
     void Update()
     {
-        shotCounter.text = StrokeCounter.strokesAvailable.ToString();
+        for (int i = 0; i < 15; i++)
+        {
+            if (i >= StrokeCounter.strokesAvailable)
+                lifePoint[i].enabled = false;
+            else
+                lifePoint[i].enabled = true;
+        }
+        //gameObject.SetActive = false;
+        //shotCounter.text = StrokeCounter.strokesAvailable.ToString();
     }
 }
