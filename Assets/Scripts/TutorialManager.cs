@@ -14,6 +14,8 @@ public class TutorialManager : MonoBehaviour
     public Sprite Vignette02;
     private int trackLivesCounter;
     private int minimapCounter;
+    private int sunCounter;
+    private int waterCounter;
     private enum tuteStatuses
     {
         ClicknHold,
@@ -23,6 +25,12 @@ public class TutorialManager : MonoBehaviour
         MinimapA,
         MinimapB,
         CollectItems,
+        GotSunA,
+        GotSunB,
+        GotSunC,
+        GotWaterA,
+        GotWaterB,
+        GotWaterC,
         ReturnHome,
         AllDone
     }
@@ -71,7 +79,7 @@ public class TutorialManager : MonoBehaviour
                     else
                     {
                         tuteStatus = tuteStatuses.CollectItems;
-                        TutorialText.text = "See the blue and yellow dots on the mini-map?  Try moving toward one.";
+                        TutorialText.text = "Try moving toward a blue or yellow dot on the mini-map.";
                         Collectables.SetActive(true);
                     }
                 }
@@ -86,11 +94,61 @@ public class TutorialManager : MonoBehaviour
             case tuteStatuses.CollectItems:
                 {
                     var charElemDat = mainCharacter.GetComponent<CharacterElementData>();
-                    if (charElemDat.CurrentElementState != ElementState.Default)
+                    if (charElemDat.CurrentElementState == ElementState.Sun)
+                    {
+                        tuteStatus = tuteStatuses.GotSunA;
+                        TutorialText.text = "What's this?  You collected sun!";
+                    } else if (charElemDat.CurrentElementState == ElementState.Water)
+                    {
+                        tuteStatus = tuteStatuses.ReturnHome;
+                        TutorialText.text = "What's this?  You collected water!";
+                    }
+                }
+                break;
+            case tuteStatuses.GotSunA:
+                if (mainCharacter.GetComponent<character_movement>().isBeingHeld)
+                {
+                    if (sunCounter == 0)
+                        sunCounter++;
+                    if (sunCounter < 5)
+                        tuteStatus = tuteStatuses.GotSunB;
+                    else
                     {
                         tuteStatus = tuteStatuses.ReturnHome;
                         TutorialText.text = "Bring your cargo to the heart of the tree.";
+                        Collectables.SetActive(true);
                     }
+                }
+                break;
+            case tuteStatuses.GotSunB:
+                if (!mainCharacter.GetComponent<character_movement>().isBeingHeld)
+                {
+                    tuteStatus = tuteStatuses.GotSunA;
+                    TutorialText.text = "Sun energy makes you move further, try it a bit";
+                    sunCounter++;
+                }
+                break;
+            case tuteStatuses.GotWaterA:
+                if (mainCharacter.GetComponent<character_movement>().isBeingHeld)
+                {
+                    if (waterCounter == 0)
+                        waterCounter++;
+                    if (waterCounter < 5)
+                        tuteStatus = tuteStatuses.GotWaterB;
+                    else
+                    {
+                        tuteStatus = tuteStatuses.ReturnHome;
+                        TutorialText.text = "Bring your cargo to the heart of the tree.";
+                        Collectables.SetActive(true);
+                    }
+                }
+                break;
+            case tuteStatuses.GotWaterB:
+                if (!mainCharacter.GetComponent<character_movement>().isBeingHeld)
+                {
+                    tuteStatus = tuteStatuses.GotWaterA;
+                    TutorialText.text = "Water energy makes you bounce more, try it a bit";
+                    waterCounter++;
                 }
                 break;
             case tuteStatuses.ReturnHome:
