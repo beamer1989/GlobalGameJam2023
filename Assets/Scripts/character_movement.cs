@@ -116,6 +116,9 @@ public class character_movement : MonoBehaviour
         // reduce the stroke counter by 1
         StrokeCounter.ReduceStrokes();
 
+        // shoot sound effect
+        GetComponent<PlaySoundEffects>().playShoot();
+
 
     }
 }

@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 5388141518306326325}
   - component: {fileID: 5388141518306326324}
   - component: {fileID: 5388141518306326286}
+  - component: {fileID: 585592726131701874}
   m_Layer: 0
   m_Name: MainCharacterJIGGLE
   m_TagString: Untagged
@@ -299,12 +300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac1935c7a37ee4b169fed2b5c0dd6c74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultColour: {r: 1, g: 1, b: 1, a: 1}
-  waterColour: {r: 0, g: 0, b: 1, a: 1}
-  sunColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   defaultMaterial: {fileID: 2100000, guid: af206532c665d40ab9b846d03d1881f7, type: 2}
   yellowMaterial: {fileID: 2100000, guid: 113ee8f7d035a41deb99382caa51d73e, type: 2}
   blueMaterial: {fileID: 2100000, guid: d8d918b94590b415b8ce5e91a04cb119, type: 2}
+  defaultLine: {fileID: 0}
+  waterLine: {fileID: 0}
+  sunLine: {fileID: 0}
   _meshRenderer: {fileID: 5388141518306326324}
 --- !u!61 &3979902106688266127
 BoxCollider2D:
@@ -447,3 +448,19 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   referencePoints: []
+--- !u!114 &585592726131701874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979902106688266126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dae3c2dd3355246af532cf0ae8a191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deliver: {fileID: 8300000, guid: 31a4ea68cb5753a49a5d631bb6be219b, type: 3}
+  shoot: {fileID: 8300000, guid: 0f294cdc309bd54408668e3866ac093d, type: 3}
+  sun: {fileID: 8300000, guid: dd0913e4446cc85459795bf8f3e64146, type: 3}
+  water: {fileID: 8300000, guid: a8971e96be2cfbb4f9be9ae1e88c703d, type: 3}
