@@ -14,11 +14,9 @@ public class character_movement : MonoBehaviour
     public float dragDefault = 1f;
     public float shootingForceDefault = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private LineRenderer shootingLine;
+    [SerializeField] private GameObject shootCursor;
 
     // Update is called once per frame
     void Update()
@@ -31,12 +29,9 @@ public class character_movement : MonoBehaviour
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
             // set the position of the shooting line and cursor
-            this.gameObject.transform.Find("ShootCursor").gameObject.transform.position = new Vector2(mousePos.x, mousePos.y);
-            this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<LineRenderer>().SetPosition(0,this.gameObject.transform.position);
-            this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<LineRenderer>().SetPosition(1,mousePos);
-
-            
-            
+            shootCursor.transform.position = new Vector2(mousePos.x, mousePos.y);
+            shootingLine.SetPosition(0, transform.position);
+            shootingLine.SetPosition(1, mousePos);
         }
     }
 
@@ -49,10 +44,8 @@ public class character_movement : MonoBehaviour
             isBeingHeld = true;
 
             // enable visibility of shooting line and cursor
-            this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<LineRenderer>().enabled = true;
-            this.gameObject.transform.Find("ShootCursor").gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            
-            
+            shootingLine.enabled = true;
+            shootCursor.GetComponent<SpriteRenderer>().enabled = true;
         }
 
     }
@@ -63,8 +56,8 @@ public class character_movement : MonoBehaviour
         isBeingHeld = false;
 
         // get force to send character
-        float x_force = this.gameObject.transform.position.x - this.gameObject.transform.Find("ShootCursor").gameObject.transform.position.x;
-        float y_force = this.gameObject.transform.position.y - this.gameObject.transform.Find("ShootCursor").gameObject.transform.position.y;
+        float x_force = this.gameObject.transform.position.x - shootCursor.transform.position.x;
+        float y_force = this.gameObject.transform.position.y - shootCursor.transform.position.y;
         Vector2 shoot_force = new Vector2(x_force, y_force);    
 
         // set SUN POWER
@@ -88,9 +81,9 @@ public class character_movement : MonoBehaviour
             newDrag = dragDefault;
         }
 
-        if (this.gameObject.GetComponent<Rigidbody2D>().drag != newDrag)
+        if (rigidbody2D.drag != newDrag)
         {
-            this.gameObject.GetComponent<Rigidbody2D>().drag = newDrag;
+            rigidbody2D.drag = newDrag;
             foreach (var softBodyReference in softBodyReferences)
             {
                 softBodyReference.GetComponent<Rigidbody2D>().drag = newDrag;
@@ -98,20 +91,20 @@ public class character_movement : MonoBehaviour
         }
 
         // get rotation to send character
-        Vector3 diff = this.gameObject.transform.Find("ShootCursor").gameObject.transform.position - this.gameObject.transform.position;
+        Vector3 diff = shootCursor.transform.position - this.gameObject.transform.position;
         diff.Normalize();
         float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
         // return target cursor to character
-        this.gameObject.transform.Find("ShootCursor").gameObject.transform.position = this.gameObject.transform.position;
+        shootCursor.transform.position = this.gameObject.transform.position;
 
         // apply force and rotation to character
         this.gameObject.transform.rotation = Quaternion.Euler(0f, 0f, rot_z + 180);
-        this.gameObject.GetComponent<Rigidbody2D>().AddForce(shoot_force, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(shoot_force, ForceMode2D.Impulse);
 
         // remove the shooting line and cursor
-        this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<LineRenderer>().enabled = false;
-        this.gameObject.transform.Find("ShootCursor").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        shootingLine.enabled = false;
+        shootCursor.GetComponent<SpriteRenderer>().enabled = false;
 
         // reduce the stroke counter by 1
         StrokeCounter.ReduceStrokes();
