@@ -59,10 +59,12 @@ public class CharacterElementData : MonoBehaviour
             case ElementState.Water:
                 _meshRenderer.material = blueMaterial;
                 shootingLineRenderer.material = waterLine;
+                GetComponent<PlaySoundEffects>().playWater();
                 break;
             case ElementState.Sun:
                 _meshRenderer.material = yellowMaterial;
                 shootingLineRenderer.material = sunLine;
+                GetComponent<PlaySoundEffects>().playSun();
                 break;
             default:
                 _meshRenderer.material = defaultMaterial;
