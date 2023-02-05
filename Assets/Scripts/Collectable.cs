@@ -8,14 +8,13 @@ public class Collectable : MonoBehaviour
 	public ElementState MyElement = ElementState.Default;
 
 	[Header("Element Display Values")]
-	[SerializeField] private Sprite sunCollectableSprite;
-	[SerializeField] private Sprite waterCollectableSprite;
+	[SerializeField] private GameObject sunCollectableDisplay;
+	[SerializeField] private GameObject waterCollectableDisplay;
 	
-	[Header("Element Display Values")]
+	[Header("Minimap")]
 	[SerializeField] private Sprite minimapSprite;
 
 	[Header("UI")]
-	[SerializeField] private SpriteRenderer _spriteRenderer;
 	[SerializeField] private SpriteRenderer _minimapSpriteRenderer;
 
 	private void Awake()
@@ -24,7 +23,8 @@ public class Collectable : MonoBehaviour
 		{
 			case ElementState.Sun:
 				{
-					_spriteRenderer.sprite = sunCollectableSprite;
+					sunCollectableDisplay.SetActive(true);
+					waterCollectableDisplay.SetActive(false);
 					//Debug.Log(_spriteRenderer.sprite);
 					//Debug.Log("ff" + _minimapSpriteRenderer);
 					_minimapSpriteRenderer.color = new Color(255, 226, 0);
@@ -35,7 +35,8 @@ public class Collectable : MonoBehaviour
 				break;
 			case ElementState.Water:
 				{
-					_spriteRenderer.sprite = waterCollectableSprite;
+					sunCollectableDisplay.SetActive(false);
+					waterCollectableDisplay.SetActive(true);
 					_minimapSpriteRenderer.sprite = minimapSprite;
 					_minimapSpriteRenderer.color = Color.blue;//new Color(162, 255, 255);
 					Debug.Log(_minimapSpriteRenderer.color); 
