@@ -9,8 +9,10 @@ public class character_movement : MonoBehaviour
     private float startPosY;
     public bool isBeingHeld = false;
 
-    private float sunPowerIncrease = 5f;
-    private float waterPowerIncrease = 0.1f;
+    public float sunPowerIncrease = 5f;
+    public float waterPowerIncrease = 0.1f;
+    public float dragDefault = 1f;
+    public float shootingForceDefault = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +52,6 @@ public class character_movement : MonoBehaviour
             this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<LineRenderer>().enabled = true;
             this.gameObject.transform.Find("ShootCursor").gameObject.GetComponent<SpriteRenderer>().enabled = true;
             
-            print(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState);
             
         }
 
@@ -70,14 +71,18 @@ public class character_movement : MonoBehaviour
         if(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState == ElementState.Sun){
             shoot_force = shoot_force * sunPowerIncrease;
         }
+        else
+        {
+            shoot_force = shoot_force * shootingForceDefault;
+        }
 
         // set WATER POWER
         if(this.gameObject.GetComponent<CharacterElementData>().CurrentElementState == ElementState.Water){
-            this.gameObject.GetComponent<Rigidbody2D>().drag = 0.1f;
+            this.gameObject.GetComponent<Rigidbody2D>().drag = waterPowerIncrease;
         }
         else
         {
-            this.gameObject.GetComponent<Rigidbody2D>().drag = 1f;
+            this.gameObject.GetComponent<Rigidbody2D>().drag = dragDefault;
         }
 
         // get rotation to send character
@@ -95,6 +100,9 @@ public class character_movement : MonoBehaviour
         // remove the shooting line and cursor
         this.gameObject.transform.Find("ShootingLine").gameObject.GetComponent<LineRenderer>().enabled = false;
         this.gameObject.transform.Find("ShootCursor").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+
+        // reduce the stroke counter by 1
+        StrokeCounter.ReduceStrokes();
 
 
     }

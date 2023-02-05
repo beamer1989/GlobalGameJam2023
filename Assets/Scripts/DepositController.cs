@@ -15,5 +15,9 @@ public class DepositController : MonoBehaviour
 		}
 
 		playerController.CurrentElementState = ElementState.Default;
+		
+        StrokeCounter.IncreaseStrokes();
 	}
+
+
 }
